@@ -11,16 +11,15 @@ public class DepositCalculator {
     }
 
     double calculateSimplePercent(double amount, int period) {
-         return round(amount + amount * YEAR_RATE * period, DEFAULT_PLACES);
+        return round(amount + amount * YEAR_RATE * period, DEFAULT_PLACES);
     }
 
     double round(double value, int places) {
-       double scaLe= Math.pow(10, places);
-       return Math.round(value * scaLe) / scaLe;
+        double scaLe = Math.pow(10, places);
+        return Math.round(value * scaLe) / scaLe;
     }
 
-    void run()
-    {
+    void run() {
         int period;
         int action;
 
@@ -37,8 +36,7 @@ public class DepositCalculator {
         double depositPercent = 0;
         if (action == 1) {
             depositPercent = calculateSimplePercent(amount, period);
-        }
-        else if (action == 2) {
+        } else if (action == 2) {
             depositPercent = calculateComplexPercent(amount, period);
         }
 
