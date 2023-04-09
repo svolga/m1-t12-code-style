@@ -1,12 +1,12 @@
 import java.util.Scanner;
 
-public class CalculateDeposit {
+public class DepositCalculator {
     private final double YEAR_RATE = 0.06;
-    private final int MONTH_COUNT = 12;
     private final int DEFAULT_PLACES = 2;
 
     double calculateComplexPercent(double amount, int period) {
-        double pay = amount * Math.pow((1 + YEAR_RATE / MONTH_COUNT), MONTH_COUNT * period);
+        final int monthCount = 12;
+        double pay = amount * Math.pow((1 + YEAR_RATE / monthCount), monthCount * period);
         return round(pay, DEFAULT_PLACES);
     }
 
@@ -19,7 +19,7 @@ public class CalculateDeposit {
        return Math.round(value * scaLe) / scaLe;
     }
 
-    void doImportantJob( )
+    void run()
     {
         int period;
         int action;
@@ -29,24 +29,24 @@ public class CalculateDeposit {
         int amount = scanner.nextInt();
 
         System.out.println("Введите срок вклада в годах:");
-        period = scanner.nextInt( );
+        period = scanner.nextInt();
 
         System.out.println("Выберите тип вклада, 1 - вклад с обычным процентом, 2 - вклад с капитализацией:");
         action = scanner.nextInt();
 
-        double value = 0;
+        double depositPercent = 0;
         if (action == 1) {
-            value = calculateSimplePercent(amount, period);
+            depositPercent = calculateSimplePercent(amount, period);
         }
         else if (action == 2) {
-            value = calculateComplexPercent(amount, period);
+            depositPercent = calculateComplexPercent(amount, period);
         }
 
-        System.out.println("Результат вклада: " + amount + " за " + period + " лет превратятся в " + value);
+        System.out.println("Результат вклада: " + amount + " за " + period + " лет превратятся в " + depositPercent);
     }
 
     public static void main(String[] args) {
-        new CalculateDeposit().doImportantJob();
+        new DepositCalculator().run();
     }
 
 }
